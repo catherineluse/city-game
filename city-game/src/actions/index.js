@@ -35,25 +35,49 @@ export function filterCitiesByPopulation(citiesWithPopulation, pop){
   }
 }
 
+
+/*
+export const fetchProducts = () => {
+  return (dispatch) => {
+    axios.get('http://localhost:8000/products')
+    .then(res => dispatch({
+      type: FETCHED_PRODUCTS,
+      payload: res.data
+    }))
+    .catch(err => dispatch({
+      type: FAILED_TO_FETCH_PRODUCTS,
+      payload: err
+    }))
+  }
+}
+*/
+
 //FETCHED_CITIES_WITH_COORDINATES payload
 //should be an array. It corresponds with
 //state.citiesWithCoordinates.
 export function fetchCitiesWithCoordinates(state){
-  const request = axios.get('localhost:8000/coordinates');
-  return {
-    type: 'FETCHED_CITIES_WITH_COORDINATES',
-    payload: request
+
+  return(dispatch) => {
+    axios.get('localhost:8000/coordinates')
+    .then(res => dispatch({
+      type: 'FETCHED_CITIES_WITH_COORDINATES',
+      payload: res
+    }))
   }
 }
 
 //FETCHED_CITIES_WITH_POPULATION payload
 //should be an array. It corresponds with
 //state.citiesWithPopulation.
+
 export function fetchCitiesWithPopulation(state){
-  const request = axios.get('localhost:8000/population');
-  return {
-    type: 'FETCHED_CITIES_WITH_POPULATION',
-    payload: request
+console.log("i ran fetchCitiesWithPopulation")
+  return(dispatch) => {
+    axios.get('localhost:8000/population')
+    .then(res => dispatch({
+        type: 'FETCHED_CITIES_WITH_POPULATION',
+        payload: res
+      }));
   }
 }
 

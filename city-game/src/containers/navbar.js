@@ -12,13 +12,13 @@ import {
   Navbar,
   NavbarBrand,
   Nav,
+  DropdownItem,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem } from 'reactstrap';
+ } from 'reactstrap';
 
 export class TopNavbar extends Component {
-
 
   renderStateList() {
     return this.props.states.map((state) => {
@@ -27,6 +27,8 @@ export class TopNavbar extends Component {
           key={ state.name }
           onClick={ ()=>{
             setActiveState(state);
+            fetchCitiesWithPopulation();
+            console.log('props updated ', this.props.citiesWithPopulation)
           } }
           className="list-group-item">
           { state.name }
@@ -53,7 +55,7 @@ export class TopNavbar extends Component {
       return (
         <div>
           <Navbar color="light" light expand="md">
-            <NavbarBrand href="/">Learn Cities <span>built with React and Redux</span></NavbarBrand>
+            <NavbarBrand href="/">Learn Cities <span>(Built with React and Redux)</span></NavbarBrand>
 
               <Nav className="ml-auto" navbar>
 
